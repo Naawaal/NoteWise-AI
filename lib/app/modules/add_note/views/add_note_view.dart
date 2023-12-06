@@ -18,7 +18,10 @@ class AddNoteView extends GetView<AddNoteController> {
         ),
         actions: [
           TextButton(
-            onPressed: () {},
+            onPressed: () async {
+              await controller.getNotes();
+              Get.back();
+            },
             child: const Text("Save"),
           ),
         ],
