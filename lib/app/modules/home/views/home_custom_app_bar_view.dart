@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
 
-class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar({Key? key}) : super(key: key);
+class CustomAppBarView extends StatelessWidget implements PreferredSizeWidget {
+  const CustomAppBarView({Key? key}) : super(key: key);
+
+  @override
+  Size get preferredSize => const Size.fromHeight(50);
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: AppBar(
+        centerTitle: true,
         leading: IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.sort,
-              color: Colors.black,
-            )),
+          onPressed: () {},
+          icon: const Icon(
+            Icons.sort,
+          ),
+        ),
         title: const Text(
           "Recent Notes",
         ),
@@ -21,15 +25,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             onPressed: () {},
             icon: const Icon(
               Icons.search,
-              color: Colors.black,
             ),
           )
         ],
-        backgroundColor: Colors.white,
       ),
     );
   }
-
-  @override
-  Size get preferredSize => const Size.fromHeight(50);
 }

@@ -1,6 +1,4 @@
 {
-  "dart.autoWrap": true,
-  "dart.previewLsp": true,
   "dart.completeFunctionCalls": true,
   "editor.suggestSelection": "first",
   "editor.tabCompletion": "on",
