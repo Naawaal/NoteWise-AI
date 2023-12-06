@@ -9,13 +9,14 @@ class HomeView extends GetView<HomeController> {
   const HomeView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: CustomAppBarView(),
-      body: HomeGridBuilderView(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+    return Scaffold(
+      appBar: const CustomAppBarView(),
+      body: const SafeArea(
+        child: HomeGridBuilderView(),
+      ),
       floatingActionButton: FloatingActionButton(
-        onPressed: null,
-        child: Icon(Icons.add),
+        onPressed: () {},
+        child: const Icon(Icons.add),
       ),
     );
   }

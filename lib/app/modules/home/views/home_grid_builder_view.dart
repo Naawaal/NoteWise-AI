@@ -7,19 +7,24 @@ class HomeGridBuilderView extends GetView {
   @override
   Widget build(BuildContext context) {
     return MasonryGridView.builder(
-      itemCount: 10,
+      itemCount: 06,
+      scrollDirection: Axis.vertical,
       shrinkWrap: true,
+      mainAxisSpacing: 8,
+      crossAxisSpacing: 8,
       clipBehavior: Clip.antiAlias,
       gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
       ),
       itemBuilder: (BuildContext context, int index) {
-        return Padding(
-          padding: const EdgeInsets.all(4.0),
-          child: Container(
-            color: Colors.indigoAccent,
-            height: 100,
-            width: 100,
+        return Container(
+          height: Get.height * 0.28,
+          decoration: BoxDecoration(
+            color: Colors.blue[100 * (index % 9 + 1)],
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Center(
+            child: Text('$index'),
           ),
         );
       },
