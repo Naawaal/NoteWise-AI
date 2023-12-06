@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-
+import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:note_wise_ai/app/widgets/text_form_filed_widget.dart';
 
 import '../controllers/add_note_controller.dart';
 
@@ -10,13 +11,32 @@ class AddNoteView extends GetView<AddNoteController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('AddNoteView'),
         centerTitle: true,
+        leading: IconButton(
+          onPressed: () => Get.back(),
+          icon: const Icon(Icons.arrow_back),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {},
+            child: const Text("Save"),
+          ),
+        ],
       ),
-      body: const Center(
-        child: Text(
-          'AddNoteView is working',
-          style: TextStyle(fontSize: 20),
+      body: SafeArea(
+        child: Column(
+          children: [
+            TextFormFieldWidget(
+              hintText: "Title",
+              fontSize: 20,
+              controller: TextEditingController(),
+            ),
+            const Gap(15),
+            TextFormFieldWidget(
+              hintText: "Note",
+              controller: TextEditingController(),
+            ),
+          ],
         ),
       ),
     );
