@@ -1,0 +1,21 @@
+{
+  "dart.autoWrap": true,
+  "dart.previewLsp": true,
+  "dart.completeFunctionCalls": true,
+  "editor.suggestSelection": "first",
+  "editor.tabCompletion": "on",
+  "editor.suggest.snippetsPreventQuickSuggestions": false,
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": true
+  },
+  "editor.parameterHints.enabled": true,
+  "editor.wordBasedSuggestions": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.organizeImports": true,
+    "source.sortMembers": true
+  },
+  "dart.autoImportCompletions": true
+}

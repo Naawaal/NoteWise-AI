@@ -11,6 +11,7 @@ void main() {
       title: "NoteWise AI",
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
+      themeMode: ThemeMode.system,
     ),
   );
 }
