@@ -12,8 +12,6 @@
   "editor.wordBasedSuggestions": true,
   "editor.codeActionsOnSave": {
     "source.fixAll": true,
-    "source.organizeImports": true,
-    "source.sortMembers": true
-  },
-  "dart.autoImportCompletions": true
+    "source.organizeImports": true
+  }
 }

@@ -26,15 +26,19 @@ class AddNoteView extends GetView<AddNoteController> {
       body: SafeArea(
         child: Column(
           children: [
-            TextFormFieldWidget(
-              hintText: "Title",
-              fontSize: 20,
-              controller: TextEditingController(),
+            Obx(
+              () => TextFormFieldWidget(
+                hintText: "Title",
+                fontSize: 20,
+                controller: controller.titleController,
+              ),
             ),
             const Gap(15),
-            TextFormFieldWidget(
-              hintText: "Note",
-              controller: TextEditingController(),
+            Obx(
+              () => TextFormFieldWidget(
+                hintText: "Note",
+                controller: controller.noteController,
+              ),
             ),
           ],
         ),

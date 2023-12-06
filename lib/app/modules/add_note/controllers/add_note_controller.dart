@@ -1,23 +1,32 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AddNoteController extends GetxController {
-  //TODO: Implement AddNoteController
+  // ----------------- Rx Variables ----------------- //
+  final _titleController = TextEditingController().obs;
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
-  }
+  final _noteController = TextEditingController().obs;
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
+  // ----------------- Getters ----------------- //
+
+  TextEditingController get titleController => _titleController.value;
+
+  TextEditingController get noteController => _noteController.value;
+
+  // ----------------- Setters ----------------- //
+
+  set noteController(TextEditingController value) =>
+      _noteController.value = value;
+
+  set titleController(TextEditingController value) =>
+      _titleController.value = value;
+
+  // ----------------- Functions ----------------- //
 
   @override
   void onClose() {
+    _titleController.close();
+    _noteController.close();
     super.onClose();
   }
-
-  void increment() => count.value++;
 }
