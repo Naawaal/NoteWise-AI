@@ -21,12 +21,15 @@ class HomeGridItemView extends GetView<HomeController> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  data![index].category,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w500,
-                    letterSpacing: 0.5,
-                    fontSize: 16,
+                SizedBox(
+                  height: Get.height * 0.04,
+                  child: Chip(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16)),
+                    label: Text(data![index].category),
+                    backgroundColor: Colors.deepOrange[200]!.withOpacity(0.05),
+                    elevation: 02,
+                    clipBehavior: Clip.antiAlias,
                   ),
                 ),
                 const Divider(
@@ -59,6 +62,7 @@ class HomeGridItemView extends GetView<HomeController> {
             Positioned(
               right: 0,
               child: Container(
+                height: Get.height * 0.045,
                 decoration: const BoxDecoration(
                   color: Colors.white,
                   shape: BoxShape.circle,
@@ -69,6 +73,7 @@ class HomeGridItemView extends GetView<HomeController> {
                   icon: const Icon(
                     Icons.delete,
                     color: Colors.red,
+                    size: 22,
                   ),
                 ),
               ),

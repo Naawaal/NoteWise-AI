@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:note_wise_ai/app/modules/add_note/views/add_note_custom_bottom_view.dart';
 import 'package:note_wise_ai/app/widgets/text_form_filed_widget.dart';
@@ -24,24 +25,35 @@ class AddNoteView extends GetView<AddNoteController> {
         ],
       ),
       body: SafeArea(
-        child: Column(
-          children: [
-            Obx(
-              () => TextFormFieldWidget(
-                hintText: "Title",
-                hintFontSize: 22,
-                controller: controller.titleController,
-              ),
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Obx(
+                  () => TextFormFieldWidget(
+                    hintText: "Title",
+                    hintFontSize: 22,
+                    controller: controller.titleController,
+                  ),
+                ),
+                Obx(
+                  () => TextFormFieldWidget(
+                    hintText: "Note",
+                    hintFontSize: 18,
+                    controller: controller.noteController,
+                    maxLength: null,
+                  ),
+                ),
+                Gap(Get.height * 0.02),
+                Chip(
+                  backgroundColor: Colors.blue.withOpacity(0.1),
+                  label: const Text("Tag"),
+                ),
+              ],
             ),
-            Obx(
-              () => TextFormFieldWidget(
-                hintText: "Note",
-                hintFontSize: 18,
-                controller: controller.noteController,
-                maxLength: null,
-              ),
-            ),
-          ],
+          ),
         ),
       ),
       bottomNavigationBar: const AddNoteCustomBottomView(),

@@ -28,7 +28,7 @@ class TextFormFieldWidget extends StatelessWidget {
         hintText: hintText,
         hintStyle: TextStyle(
           fontSize: hintFontSize,
-          fontWeight: FontWeight.w600,
+          fontWeight: FontWeight.w500,
           letterSpacing: 0.8,
         ),
         enabled: true,
