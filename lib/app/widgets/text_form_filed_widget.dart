@@ -21,7 +21,7 @@ class TextFormFieldWidget extends StatelessWidget {
       maxLength: maxLength,
       style: const TextStyle(
         fontSize: 18,
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.w500,
         letterSpacing: 0.8,
       ),
       decoration: InputDecoration(
