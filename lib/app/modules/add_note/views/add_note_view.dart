@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:note_wise_ai/app/modules/add_note/views/add_note_custom_bottom_view.dart';
 import 'package:note_wise_ai/app/widgets/text_form_filed_widget.dart';
 
 import '../controllers/add_note_controller.dart';
@@ -38,11 +39,13 @@ class AddNoteView extends GetView<AddNoteController> {
               () => TextFormFieldWidget(
                 hintText: "Note",
                 controller: controller.noteController,
+                maxLength: null,
               ),
             ),
           ],
         ),
       ),
+      bottomNavigationBar: const AddNoteCustomBottomView(),
     );
   }
 }

@@ -11,10 +11,10 @@ class HomeGridItemView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return controller.obx(
       (data) => Container(
-        padding: const EdgeInsets.all(06),
+        padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
           color: Colors.indigo[100],
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(14),
         ),
         child: Stack(
           children: [
@@ -39,13 +39,13 @@ class HomeGridItemView extends GetView<HomeController> {
                   style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
-                    letterSpacing: 1,
+                    letterSpacing: 0.8,
                   ),
                 ),
                 SizedBox(height: Get.height * 0.01),
-                const Text(
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-                  style: TextStyle(
+                Text(
+                  data[index].note,
+                  style: const TextStyle(
                     fontSize: 16,
                     letterSpacing: 1,
                   ),
@@ -64,8 +64,12 @@ class HomeGridItemView extends GetView<HomeController> {
                   shape: BoxShape.circle,
                 ),
                 child: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.delete),
+                  onPressed: () async =>
+                      controller.deleteNoteById(data[index].id),
+                  icon: const Icon(
+                    Icons.delete,
+                    color: Colors.red,
+                  ),
                 ),
               ),
             ),

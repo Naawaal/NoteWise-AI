@@ -20,6 +20,7 @@ class AppPages {
       name: _Paths.ADD_NOTE,
       page: () => const AddNoteView(),
       binding: AddNoteBinding(),
+      transition: Transition.upToDown,
     ),
   ];
 

@@ -4,11 +4,13 @@ class TextFormFieldWidget extends StatelessWidget {
   final String hintText;
   final TextEditingController controller;
   final double? fontSize;
+  final int? maxLength;
   const TextFormFieldWidget({
     super.key,
     required this.hintText,
     required this.controller,
     this.fontSize = 16,
+    this.maxLength = 26,
   });
 
   @override
@@ -16,6 +18,10 @@ class TextFormFieldWidget extends StatelessWidget {
     return TextFormField(
       controller: controller,
       maxLines: null,
+      maxLength: maxLength,
+      buildCounter: (BuildContext context,
+              {int? currentLength, int? maxLength, bool? isFocused}) =>
+          null,
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: TextStyle(
