@@ -11,13 +11,12 @@ class HomeGridBuilderView extends GetView<HomeController> {
     return controller.obx(
       (data) => MasonryGridView.builder(
         itemCount: data!.length,
-        semanticChildCount: 10,
         mainAxisSpacing: 5,
         crossAxisSpacing: 5,
         gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2),
         itemBuilder: (context, index) => HomeGridItemView(
-          index: index,
+          index: data.length - index - 1,
         ),
       ),
     );

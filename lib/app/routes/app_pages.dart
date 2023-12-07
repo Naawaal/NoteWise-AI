@@ -15,13 +15,11 @@ class AppPages {
       name: _Paths.HOME,
       page: () => const HomeView(),
       binding: HomeBinding(),
-      transition: Transition.size,
     ),
     GetPage(
       name: _Paths.ADD_NOTE,
       page: () => const AddNoteView(),
       binding: AddNoteBinding(),
-      transition: Transition.upToDown,
     ),
   ];
 

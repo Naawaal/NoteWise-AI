@@ -15,6 +15,7 @@ void main() async {
       themeMode: ThemeMode.light,
       theme: CustomTheme.lightTheme,
       darkTheme: CustomTheme.darkTheme,
+      smartManagement: SmartManagement.full,
     ),
   );
 }

@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:note_wise_ai/app/data/models/add_note_model.dart';
 import 'package:note_wise_ai/app/data/services/db_services.dart';
 
+import '../../home/controllers/home_controller.dart';
+
 class AddNoteController extends GetxController {
   // ----------------- Instance ----------------- //
 
@@ -39,6 +41,9 @@ class AddNoteController extends GetxController {
     DBServices.instance.insertNote(addNoteModel);
     _titleController.value.clear();
     _noteController.value.clear();
+    // Get the instance of HomeController
+    final homeController = Get.find<HomeController>();
+    await homeController.fetchSavedNotes();
     Get.back();
   }
 
