@@ -13,17 +13,8 @@ class AddNoteModel {
     required this.date,
   });
 
-  factory AddNoteModel.fromJson(Map<String, dynamic> json) {
-    return AddNoteModel(
-      id: json['id'],
-      title: json['title'],
-      note: json['note'],
-      category: json['category'],
-      date: json['date'],
-    );
-  }
-
-  Map<String, dynamic> toJson() {
+  // Convert AddNoteModel to a Map for database operations
+  Map<String, dynamic> toMap() {
     return {
       'id': id,
       'title': title,
@@ -31,5 +22,16 @@ class AddNoteModel {
       'category': category,
       'date': date,
     };
+  }
+
+  // Convert a Map to an AddNoteModel
+  factory AddNoteModel.fromMap(Map<String, dynamic> map) {
+    return AddNoteModel(
+      id: map['id'],
+      title: map['title'],
+      note: map['note'],
+      category: map['category'],
+      date: map['date'],
+    );
   }
 }

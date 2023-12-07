@@ -6,8 +6,6 @@ import 'package:note_wise_ai/app/data/services/db_services.dart';
 class AddNoteController extends GetxController {
   // ----------------- Instance ----------------- //
 
-  final DBServices _dbServices = DBServices();
-
   // ----------------- Rx Variables ----------------- //
   final _titleController = TextEditingController().obs;
 
@@ -27,23 +25,24 @@ class AddNoteController extends GetxController {
   set titleController(TextEditingController value) =>
       _titleController.value = value;
 
-  // ----------------- Functions ----------------- //
+  // ----------------- Method ----------------- //
 
   Future<void> saveNote() async {
-    await _dbServices.addNote(
-      AddNoteModel(
-        id: int.parse(DateTime.now().millisecondsSinceEpoch.toString()),
-        title: titleController.text,
-        note: noteController.text,
-        category: 'General',
-        date: DateTime.now().toString(),
-      ),
+    // Create an instance of AddNoteModel
+    final AddNoteModel addNoteModel = AddNoteModel(
+      id: int.parse(DateTime.now().millisecondsSinceEpoch.toString()),
+      title: titleController.text,
+      note: noteController.text,
+      category: "General",
+      date: DateTime.now().toString(),
     );
+    DBServices.instance.insertNote(addNoteModel);
+    _titleController.value.clear();
+    _noteController.value.clear();
+    Get.back();
   }
 
-  Future<void> getNotes() async {
-    await _dbServices.getNotes();
-  }
+  Future<void> getNotes() async {}
 
   // ----------------- Life Cycle ----------------- //
 
