@@ -20,14 +20,6 @@ class CustomAppBarView extends StatelessWidget implements PreferredSizeWidget {
         title: const Text(
           "Recent Notes",
         ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.search,
-            ),
-          )
-        ],
       ),
     );
   }

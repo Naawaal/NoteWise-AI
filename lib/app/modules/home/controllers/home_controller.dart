@@ -10,15 +10,21 @@ class HomeController extends GetxController
 
   // ----------------- Getters ----------------- //
 
-  // ----------------- Setters ----------------- //
-
   // ----------------- Method ----------------- //
 
   void fetchSavedNotes() async {
+    change(null, status: RxStatus.loading());
     await DBServices.instance.getNotes().then((value) {
-      change(value, status: RxStatus.success());
+      if (value.isEmpty) {
+        change(null, status: RxStatus.empty());
+        update();
+      } else {
+        change(value, status: RxStatus.success());
+        update();
+      }
     }, onError: (error) {
       change(null, status: RxStatus.error(error.toString()));
+      update();
     });
   }
 

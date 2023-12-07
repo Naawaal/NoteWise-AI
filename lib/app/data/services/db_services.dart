@@ -70,4 +70,27 @@ class DBServices {
       ),
     );
   }
+
+  Future<void> updateNote(
+    AddNoteModel addNoteModel,
+  ) async {
+    final Database db = await database;
+    await db.update(
+      'notes',
+      addNoteModel.toMap(),
+      where: 'id = ?',
+      whereArgs: [addNoteModel.id],
+    );
+  }
+
+  Future<void> deleteNote(
+    int id,
+  ) async {
+    final Database db = await database;
+    await db.delete(
+      'notes',
+      where: 'id = ?',
+      whereArgs: [id],
+    );
+  }
 }

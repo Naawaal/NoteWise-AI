@@ -12,8 +12,13 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBarView(),
-      body: const SafeArea(
-        child: HomeGridBuilderView(),
+      body: SafeArea(
+        child: controller.obx(
+          (data) => const HomeGridBuilderView(),
+          onLoading: const Center(child: CircularProgressIndicator()),
+          onError: (error) => Center(child: Text(error.toString())),
+          onEmpty: const Center(child: Text('Add Your First Note')),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         clipBehavior: Clip.antiAlias,
