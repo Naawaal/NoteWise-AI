@@ -26,6 +26,11 @@ class HomeController extends GetxController
     update();
   }
 
+  Future<void> deleteNoteById(int id) async {
+    await DBServices.instance.deleteNote(id);
+    await fetchSavedNotes();
+  }
+
   // ----------------- Life Cycle ----------------- //
   @override
   void onInit() {
