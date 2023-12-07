@@ -30,7 +30,7 @@ class AddNoteView extends GetView<AddNoteController> {
             Obx(
               () => TextFormFieldWidget(
                 hintText: "Title",
-                fontSize: 20,
+                hintFontSize: 22,
                 controller: controller.titleController,
               ),
             ),
@@ -38,6 +38,7 @@ class AddNoteView extends GetView<AddNoteController> {
             Obx(
               () => TextFormFieldWidget(
                 hintText: "Note",
+                hintFontSize: 18,
                 controller: controller.noteController,
                 maxLength: null,
               ),

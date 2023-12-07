@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 class TextFormFieldWidget extends StatelessWidget {
   final String hintText;
   final TextEditingController controller;
-  final double? fontSize;
+  final double? hintFontSize;
   final int? maxLength;
   const TextFormFieldWidget({
     super.key,
     required this.hintText,
     required this.controller,
-    this.fontSize = 16,
+    this.hintFontSize = 16,
     this.maxLength = 26,
   });
 
@@ -19,15 +19,17 @@ class TextFormFieldWidget extends StatelessWidget {
       controller: controller,
       maxLines: null,
       maxLength: maxLength,
-      buildCounter: (BuildContext context,
-              {int? currentLength, int? maxLength, bool? isFocused}) =>
-          null,
+      style: const TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.w600,
+        letterSpacing: 0.8,
+      ),
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: TextStyle(
-          fontSize: fontSize,
-          fontWeight: FontWeight.w500,
-          letterSpacing: 0.5,
+          fontSize: hintFontSize,
+          fontWeight: FontWeight.w600,
+          letterSpacing: 0.8,
         ),
         enabled: true,
         border: InputBorder.none,
