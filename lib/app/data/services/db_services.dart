@@ -83,9 +83,7 @@ class DBServices {
     );
   }
 
-  Future<void> deleteNote(
-    int id,
-  ) async {
+  Future<void> deleteNote(int id) async {
     final Database db = await database;
     await db.delete(
       'notes',
