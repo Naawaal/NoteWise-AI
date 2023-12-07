@@ -33,10 +33,11 @@ class HomeGridItemView extends GetView<HomeController> {
                   color: Colors.grey,
                   thickness: 1,
                 ),
+                SizedBox(height: Get.height * 0.01),
                 Text(
                   data[index].title,
                   style: const TextStyle(
-                    fontSize: 20,
+                    fontSize: 18,
                     fontWeight: FontWeight.w600,
                     letterSpacing: 1,
                   ),
