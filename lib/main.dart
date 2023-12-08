@@ -12,7 +12,7 @@ void main() async {
       title: "NoteWise AI",
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.system,
       theme: CustomTheme.lightTheme,
       darkTheme: CustomTheme.darkTheme,
       smartManagement: SmartManagement.full,
