@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:note_wise_ai/app/modules/add_note/controllers/add_note_controller.dart';
 
-class AddNoteCustomBottomView extends GetView {
+class AddNoteCustomBottomView extends GetView<AddNoteController> {
   const AddNoteCustomBottomView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: Get.height * 0.06,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(08),
       ),
@@ -24,10 +24,6 @@ class AddNoteCustomBottomView extends GetView {
           IconButton(
             onPressed: () async {},
             icon: const Icon(Iconsax.color_swatch),
-          ),
-          IconButton(
-            onPressed: () async {},
-            icon: const Icon(Iconsax.tag),
           ),
           const Expanded(child: SizedBox.shrink()),
           IconButton(

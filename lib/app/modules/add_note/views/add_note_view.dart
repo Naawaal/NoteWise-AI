@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:note_wise_ai/app/modules/add_note/views/add_note_custom_bottom_view.dart';
 import 'package:note_wise_ai/app/widgets/text_form_filed_widget.dart';
@@ -31,6 +30,42 @@ class AddNoteView extends GetView<AddNoteController> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      "Dec 12, 2021 at 12:00 PM",
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        color: Colors.blueGrey,
+                      ),
+                    ),
+                    Obx(
+                      () => DropdownButton(
+                        underline: const SizedBox(),
+                        isExpanded: false,
+                        value: controller.category,
+                        isDense: true,
+                        borderRadius: BorderRadius.circular(10),
+                        hint: const Text("Select Tag"),
+                        icon: const Icon(Icons.arrow_drop_down),
+                        items: controller.tags
+                            .map(
+                              (e) => DropdownMenuItem(
+                                value: e,
+                                child: Text(e),
+                              ),
+                            )
+                            .toList(),
+                        focusColor: Colors.transparent,
+                        onChanged: (value) {
+                          controller.category = value.toString();
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+                const Divider(),
                 Obx(
                   () => TextFormFieldWidget(
                     hintText: "Title",
@@ -40,23 +75,18 @@ class AddNoteView extends GetView<AddNoteController> {
                 ),
                 Obx(
                   () => TextFormFieldWidget(
-                    hintText: "Note",
+                    hintText: "Start typing here...",
                     hintFontSize: 18,
                     controller: controller.noteController,
                     maxLength: null,
                   ),
-                ),
-                Gap(Get.height * 0.02),
-                Chip(
-                  backgroundColor: Colors.blue.withOpacity(0.1),
-                  label: const Text("Tag"),
                 ),
               ],
             ),
           ),
         ),
       ),
-      bottomNavigationBar: const AddNoteCustomBottomView(),
+      bottomSheet: const AddNoteCustomBottomView(),
     );
   }
 }

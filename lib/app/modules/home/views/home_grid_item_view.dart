@@ -13,7 +13,7 @@ class HomeGridItemView extends GetView<HomeController> {
       (data) => Container(
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: Colors.indigo[100],
+          color: controller.notesColors[index].withOpacity(0.2),
           borderRadius: BorderRadius.circular(14),
         ),
         child: Stack(

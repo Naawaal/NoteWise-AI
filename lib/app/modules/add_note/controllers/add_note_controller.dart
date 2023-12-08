@@ -14,11 +14,19 @@ class AddNoteController extends GetxController {
 
   final _noteController = TextEditingController().obs;
 
+  final _category = "Work".obs;
+
+  final RxList<String> _tags = <String>["Work", "Personal", "Important"].obs;
+
   // ----------------- Getters ----------------- //
 
   TextEditingController get titleController => _titleController.value;
 
   TextEditingController get noteController => _noteController.value;
+
+  String get category => _category.value;
+
+  List<String> get tags => _tags;
 
   // ----------------- Setters ----------------- //
 
@@ -27,6 +35,10 @@ class AddNoteController extends GetxController {
 
   set titleController(TextEditingController value) =>
       _titleController.value = value;
+
+  set category(String value) => _category.value = value;
+
+  set tags(List<String> value) => _tags.value = value;
 
   // ----------------- Method ----------------- //
 
@@ -51,7 +63,7 @@ class AddNoteController extends GetxController {
       id: int.parse(DateTime.now().millisecondsSinceEpoch.toString()),
       title: titleController.text,
       note: noteController.text,
-      category: "General",
+      category: "Others",
       date: DateTime.now().toString(),
     );
     DBServices.instance.insertNote(addNoteModel);
@@ -62,8 +74,6 @@ class AddNoteController extends GetxController {
     await homeController.fetchSavedNotes();
     Get.back();
   }
-
-  Future<void> getNotes() async {}
 
   // ----------------- Life Cycle ----------------- //
 
