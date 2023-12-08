@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:note_wise_ai/app/data/models/add_note_model.dart';
 import 'package:note_wise_ai/app/data/services/db_services.dart';
@@ -29,6 +30,21 @@ class AddNoteController extends GetxController {
 
   // ----------------- Method ----------------- //
 
+  void transparentStatusBar() {
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      // Set status bar color to transparent
+      statusBarColor: Colors.transparent,
+      // Set status bar icons to dark
+      statusBarIconBrightness: Brightness.dark,
+    ));
+  }
+
+  void changeStatusBarTextColor(Brightness brightness) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarIconBrightness: brightness,
+    ));
+  }
+
   Future<void> saveNote() async {
     // Create an instance of AddNoteModel
     final AddNoteModel addNoteModel = AddNoteModel(
@@ -52,9 +68,17 @@ class AddNoteController extends GetxController {
   // ----------------- Life Cycle ----------------- //
 
   @override
+  void onInit() {
+    super.onInit();
+    transparentStatusBar();
+    changeStatusBarTextColor(Brightness.dark);
+  }
+
+  @override
   void onClose() {
     _titleController.close();
     _noteController.close();
+    transparentStatusBar();
     super.onClose();
   }
 }
