@@ -1,3 +1,4 @@
+import 'package:note_wise_ai/app/data/models/add_note_category_model.dart';
 import 'package:note_wise_ai/app/data/models/add_note_model.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
@@ -48,6 +49,24 @@ class DBServices {
     ''');
   }
 
+  // Create Category Table Method
+  Future<void> createTagTable(Database db) async {
+    await db.execute('''
+    CREATE TABLE tags(
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      name TEXT NOT NULL
+    )
+  ''');
+  }
+
+  Future<int> insertCategory(AddNoteCategoryModel addNoteCategoryModel) async {
+    final Database db = await database;
+    return await db.insert(
+      'category',
+      addNoteCategoryModel.toMap(),
+    );
+  }
+
   Future<int> insertNote(AddNoteModel addNoteModel) async {
     final Database db = await database;
     return await db.insert(
@@ -67,6 +86,18 @@ class DBServices {
         note: maps[index]['note'],
         category: maps[index]['category'],
         date: maps[index]['date'],
+      ),
+    );
+  }
+
+  Future<List<AddNoteCategoryModel>> getCategories() async {
+    final Database db = await database;
+    final List<Map<String, dynamic>> maps = await db.query('category');
+    return List.generate(
+      maps.length,
+      (index) => AddNoteCategoryModel(
+        id: maps[index]['id'],
+        name: maps[index]['name'],
       ),
     );
   }

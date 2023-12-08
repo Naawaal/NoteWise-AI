@@ -4,9 +4,11 @@ import 'package:get/get.dart';
 import 'package:note_wise_ai/app/data/models/add_note_model.dart';
 import 'package:note_wise_ai/app/data/services/db_services.dart';
 
+import '../../../data/models/add_note_category_model.dart';
 import '../../home/controllers/home_controller.dart';
 
-class AddNoteController extends GetxController {
+class AddNoteController extends GetxController
+    with StateMixin<List<AddNoteCategoryModel>> {
   // ----------------- Instance ----------------- //
 
   // ----------------- Rx Variables ----------------- //
@@ -85,6 +87,31 @@ class AddNoteController extends GetxController {
     final homeController = Get.find<HomeController>();
     await homeController.fetchSavedNotes();
     Get.back();
+  }
+
+  Future<void> saveCategory() async {
+    // Create an instance of AddNoteCategoryModel
+    final AddNoteCategoryModel addNoteCategoryModel = AddNoteCategoryModel(
+      id: int.parse(DateTime.now().millisecondsSinceEpoch.toString()),
+      name: customCategoryController.text,
+    );
+    DBServices.instance.insertCategory(addNoteCategoryModel);
+    _customCategoryController.value.clear();
+    Get.back();
+  }
+
+  Future<void> fetchCategories() async {
+    change([], status: RxStatus.loading());
+    await DBServices.instance.getCategories().then((value) {
+      if (value.isEmpty) {
+        change([], status: RxStatus.empty());
+      } else if (value.isNotEmpty) {
+        change(value, status: RxStatus.success());
+      } else {
+        change([], status: RxStatus.error("Error"));
+      }
+    });
+    update();
   }
 
   // ----------------- Life Cycle ----------------- //

@@ -11,12 +11,7 @@ class CustomAppBarView extends StatelessWidget implements PreferredSizeWidget {
     return SafeArea(
       child: AppBar(
         centerTitle: true,
-        leading: IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            Icons.sort,
-          ),
-        ),
+        automaticallyImplyLeading: false,
         title: const Text(
           "Recent Notes",
         ),

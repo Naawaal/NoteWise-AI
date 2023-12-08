@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:note_wise_ai/app/modules/add_note/views/add_note_custom_bottom_view.dart';
-import 'package:note_wise_ai/app/modules/add_note/views/add_note_tag_view.dart';
 import 'package:note_wise_ai/app/widgets/text_form_filed_widget.dart';
 
 import '../controllers/add_note_controller.dart';
@@ -31,8 +29,6 @@ class AddNoteView extends GetView<AddNoteController> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const AddNoteTagView(),
-                const Divider(),
                 Obx(
                   () => TextFormFieldWidget(
                     hintText: "Title",
@@ -53,7 +49,7 @@ class AddNoteView extends GetView<AddNoteController> {
           ),
         ),
       ),
-      bottomSheet: const AddNoteCustomBottomView(),
+      // bottomSheet: const AddNoteCustomBottomView(),
     );
   }
 }
