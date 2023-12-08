@@ -16,7 +16,7 @@ class AddNoteController extends GetxController {
 
   final _customCategoryController = TextEditingController().obs;
 
-  final _selectedCategory = "Work".obs;
+  final _selectedCategory = "Personal".obs;
 
   final RxList<String> _category = <String>[
     "Work",
