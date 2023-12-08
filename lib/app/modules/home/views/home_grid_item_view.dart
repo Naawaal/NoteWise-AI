@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:note_wise_ai/app/modules/home/controllers/home_controller.dart';
@@ -13,7 +15,7 @@ class HomeGridItemView extends GetView<HomeController> {
       (data) => Container(
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: controller.notesColors[index].withOpacity(0.2),
+          color: controller.notesColors[index].withOpacity(0.15),
           borderRadius: BorderRadius.circular(14),
         ),
         child: Stack(
@@ -21,15 +23,18 @@ class HomeGridItemView extends GetView<HomeController> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
-                  height: Get.height * 0.04,
-                  child: Chip(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16)),
-                    label: Text(data![index].category),
-                    backgroundColor: Colors.deepOrange[200]!.withOpacity(0.05),
-                    elevation: 02,
-                    clipBehavior: Clip.antiAlias,
+                Container(
+                  padding: const EdgeInsets.all(05),
+                  decoration: BoxDecoration(
+                    color:
+                        Color(math.Random().nextInt(0xFFFFFF)).withOpacity(0.3),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Text(
+                    data![index].category,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
                 const Divider(

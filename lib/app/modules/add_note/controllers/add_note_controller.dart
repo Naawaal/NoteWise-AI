@@ -14,9 +14,15 @@ class AddNoteController extends GetxController {
 
   final _noteController = TextEditingController().obs;
 
-  final _category = "Work".obs;
+  final _customCategoryController = TextEditingController().obs;
 
-  final RxList<String> _tags = <String>["Work", "Personal", "Important"].obs;
+  final _selectedCategory = "Work".obs;
+
+  final RxList<String> _category = <String>[
+    "Work",
+    "Personal",
+    "Important",
+  ].obs;
 
   // ----------------- Getters ----------------- //
 
@@ -24,9 +30,12 @@ class AddNoteController extends GetxController {
 
   TextEditingController get noteController => _noteController.value;
 
-  String get category => _category.value;
+  TextEditingController get customCategoryController =>
+      _customCategoryController.value;
 
-  List<String> get tags => _tags;
+  String get selectedCategory => _selectedCategory.value;
+
+  List<String> get category => _category;
 
   // ----------------- Setters ----------------- //
 
@@ -36,9 +45,12 @@ class AddNoteController extends GetxController {
   set titleController(TextEditingController value) =>
       _titleController.value = value;
 
-  set category(String value) => _category.value = value;
+  set customCategoryController(TextEditingController value) =>
+      _customCategoryController.value = value;
 
-  set tags(List<String> value) => _tags.value = value;
+  set selectedCategory(String value) => _selectedCategory.value = value;
+
+  set category(List<String> value) => _category.value = value;
 
   // ----------------- Method ----------------- //
 
@@ -63,7 +75,7 @@ class AddNoteController extends GetxController {
       id: int.parse(DateTime.now().millisecondsSinceEpoch.toString()),
       title: titleController.text,
       note: noteController.text,
-      category: "Others",
+      category: selectedCategory,
       date: DateTime.now().toString(),
     );
     DBServices.instance.insertNote(addNoteModel);

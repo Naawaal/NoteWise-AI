@@ -20,18 +20,20 @@ class AddNoteTagView extends GetView<AddNoteController> {
           () => DropdownButton(
             underline: const SizedBox(),
             isExpanded: false,
-            value: controller.category,
+            itemHeight: 50,
+            value: controller.selectedCategory,
             isDense: true,
             focusColor: Colors.transparent,
             borderRadius: BorderRadius.circular(10),
-            hint: const Text("Select Tag"),
+            hint: const Text("Select Category"),
             icon: const Icon(Icons.arrow_drop_down),
             items: [
-              const DropdownMenuItem(
+              DropdownMenuItem(
                 value: 'Custom',
-                child: Text('Add Custom Tag'),
+                child: const Text('Custom Category'),
+                onTap: () async {},
               ),
-              ...controller.tags.map(
+              ...controller.category.map(
                 (e) => DropdownMenuItem(
                   value: e,
                   child: Text(e),
@@ -39,7 +41,36 @@ class AddNoteTagView extends GetView<AddNoteController> {
               ),
             ],
             onChanged: (value) {
-              controller.category = value.toString();
+              if (value == "Custom") {
+                Get.defaultDialog(
+                  title: "Add category",
+                  titleStyle: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                  ),
+                  content: TextField(
+                    controller: controller.customCategoryController,
+                    decoration: const InputDecoration(
+                      hintText: "Enter Category Name",
+                      focusedBorder: InputBorder.none,
+                      enabledBorder: InputBorder.none,
+                      border: InputBorder.none,
+                      disabledBorder: InputBorder.none,
+                      errorBorder: InputBorder.none,
+                    ),
+                  ),
+                  textConfirm: "Add",
+                  onConfirm: () {
+                    controller.category
+                        .add(controller.customCategoryController.value.text);
+                    controller.selectedCategory =
+                        controller.customCategoryController.text;
+                    Get.back();
+                  },
+                );
+              } else {
+                controller.selectedCategory = value.toString();
+              }
             },
           ),
         ),
