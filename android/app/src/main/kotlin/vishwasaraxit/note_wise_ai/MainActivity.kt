@@ -1,4 +1,4 @@
-package vishwasaraxit.note_wise_ai
+package vishwasaraxit.notewise
 
 import io.flutter.embedding.android.FlutterActivity
 

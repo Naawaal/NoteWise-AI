@@ -46,7 +46,7 @@ class HomeGridItemView extends GetView<HomeController> {
                   data[index].title,
                   style: const TextStyle(
                     fontSize: 18,
-                    fontWeight: FontWeight.w600,
+                    fontWeight: FontWeight.w500,
                     letterSpacing: 0.8,
                   ),
                 ),
@@ -54,20 +54,19 @@ class HomeGridItemView extends GetView<HomeController> {
                 Text(
                   data[index].note,
                   style: const TextStyle(
-                    fontSize: 16,
+                    fontSize: 14,
                     letterSpacing: 1,
                   ),
                   maxLines: 5,
                   overflow: TextOverflow.ellipsis,
                   textAlign: TextAlign.justify,
                 ),
-                SizedBox(height: Get.height * 0.01),
               ],
             ),
             Positioned(
               right: 0,
               child: Container(
-                height: Get.height * 0.045,
+                height: Get.height * 0.040,
                 decoration: const BoxDecoration(
                   color: Colors.white,
                   shape: BoxShape.circle,
@@ -78,7 +77,7 @@ class HomeGridItemView extends GetView<HomeController> {
                   icon: const Icon(
                     Icons.delete,
                     color: Colors.red,
-                    size: 22,
+                    size: 20,
                   ),
                 ),
               ),
